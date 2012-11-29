@@ -92,7 +92,7 @@ $(function() {
 		},
 
 		priorityChanged: function(e) {
-			alert($(e.target).data('priority'));
+			this.$el.removeClass("high medium low").addClass($(e.target).data('priority'));
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
