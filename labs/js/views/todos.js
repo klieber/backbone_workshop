@@ -22,7 +22,8 @@ $(function() {
 			'keypress .edit':	'updateOnEnter',
 			'blur .edit':		'close',
 			'click .toggle':    'toggleVisible',
-			'click .destroy':   'remove'
+			'click .destroy':   'remove',
+			'click .priority':  'priorityChanged'
 		},
 
 
@@ -88,6 +89,10 @@ $(function() {
 			if ( e.which === ENTER_KEY ) {
 				this.close();
 			}
+		},
+
+		priorityChanged: function(e) {
+			alert($(e.target).data('priority'));
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
