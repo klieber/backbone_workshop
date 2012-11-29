@@ -41,7 +41,7 @@ $(function() {
 		render: function() {
 			this.$el.html( this.template( this.model.toJSON() ) );
 			this.$el.toggleClass( 'completed', this.model.get('completed') );
-
+			this.addPriorityClass(this.model.get('priority'));
 
 			this.toggleVisible();
 			this.input = this.$('.edit');
@@ -93,8 +93,12 @@ $(function() {
 
 		changePriority: function(e) {
 			var priority = $(e.target).data('priority');
-			this.$el.removeClass("high medium low").addClass(priority);
+			this.addPriorityClass(priority);
 			this.model.save({priority: priority});
+		},
+
+		addPriorityClass: function(priority) {
+			this.$el.removeClass("high medium low").addClass(priority);
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
