@@ -92,9 +92,7 @@ $(function() {
 		},
 
 		changePriority: function(e) {
-			var priority = $(e.target).data('priority');
-			this.addPriorityClass(priority);
-			this.model.save({priority: priority});
+			this.model.save({priority: $(e.target).data('priority')});
 		},
 
 		addPriorityClass: function(priority) {
