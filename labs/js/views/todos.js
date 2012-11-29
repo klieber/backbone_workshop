@@ -8,7 +8,7 @@ $(function() {
 
 	// The DOM element for a todo item...
 	// you'll want to extend the Backbone view here
-
+	app.TodoView = Backbone.View.extend({
 		//... is a list tag.
 		tagName:  'li',
 
@@ -20,7 +20,9 @@ $(function() {
 			//add events here!
 			'dblclick label':	'edit',
 			'keypress .edit':	'updateOnEnter',
-			'blur .edit':		'close'
+			'blur .edit':		'close',
+			'click .toggle':    'toggleVisible',
+			'click .destroy':   'remove'
 		},
 
 
@@ -31,6 +33,7 @@ $(function() {
 			// something goes here
 			this.model.on( 'destroy', this.remove, this );
 			this.model.on( 'visible', this.toggleVisible, this );
+			this.model.on( 'change', this.render, this);
 		},
 
 		// Re-render the titles of the todo item.
