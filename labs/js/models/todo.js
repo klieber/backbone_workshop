@@ -10,7 +10,8 @@ var app = app || {};
 		// define the default attributes
 		defaults: {
 			title: '',
-			completed: false
+			completed: false,
+			priority: 'low'
 		},
 
 		// Toggle the `completed` state of this todo item.

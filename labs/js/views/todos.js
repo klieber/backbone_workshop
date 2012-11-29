@@ -23,7 +23,7 @@ $(function() {
 			'blur .edit':		'close',
 			'click .toggle':    'toggleVisible',
 			'click .destroy':   'remove',
-			'click .priority':  'priorityChanged'
+			'click .priority':  'changePriority'
 		},
 
 
@@ -91,8 +91,10 @@ $(function() {
 			}
 		},
 
-		priorityChanged: function(e) {
-			this.$el.removeClass("high medium low").addClass($(e.target).data('priority'));
+		changePriority: function(e) {
+			var priority = $(e.target).data('priority');
+			this.$el.removeClass("high medium low").addClass(priority);
+			this.model.save({priority: priority});
 		},
 
 		// Remove the item, destroy the model from *localStorage* and delete its view.
